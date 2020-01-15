@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20191219191319_KreiranjeBaze.cs" />
+    <Compile Remove="Migrations\20191219191319_KreiranjeBaze.Designer.cs" />
+    <Compile Remove="Migrations\20191219201054_PromjenaValute.cs" />
+    <Compile Remove="Migrations\20191219201054_PromjenaValute.Designer.cs" />
+    <Compile Remove="Migrations\20191219231614_DodanaSlika.cs" />
+    <Compile Remove="Migrations\20191219231614_DodanaSlika.Designer.cs" />
+    <Compile Remove="Migrations\20191219232648_DodanaSlikav2.cs" />
+    <Compile Remove="Migrations\20191219232648_DodanaSlikav2.Designer.cs" />
+    <Compile Remove="Migrations\20191226141427_DodanaTabelaKategorija.cs" />
+    <Compile Remove="Migrations\20191226141427_DodanaTabelaKategorija.Designer.cs" />
+    <Compile Remove="Migrations\20191226142326_DodanaTabelaKategorija.cs" />
+    <Compile Remove="Migrations\20191226142326_DodanaTabelaKategorija.Designer.cs" />
+    <Compile Remove="Migrations\20191226143034_Dodana_Kategorija_Podkategorija.cs" />
+    <Compile Remove="Migrations\20191226143034_Dodana_Kategorija_Podkategorija.Designer.cs" />
+    <Compile Remove="Migrations\20191226144213_IzmjenaKoloneTabelaKategorija.cs" />
+    <Compile Remove="Migrations\20191226144213_IzmjenaKoloneTabelaKategorija.Designer.cs" />
+    <Compile Remove="Migrations\20191226145156_DodanaKategorijaPodkategorija.cs" />
+    <Compile Remove="Migrations\20191226145156_DodanaKategorijaPodkategorija.Designer.cs" />
+    <Compile Remove="Migrations\20191226145532_DodanaKategorijaPodkategorija.cs" />
+    <Compile Remove="Migrations\20191226145532_DodanaKategorijaPodkategorija.Designer.cs" />
+    <Compile Remove="Migrations\20191227152447_Artikal_PodkategorijaID_ChangeToNotNull.cs" />
+    <Compile Remove="Migrations\20191227152447_Artikal_PodkategorijaID_ChangeToNotNull.Designer.cs" />
+    <Compile Remove="Migrations\20191227155038_ChangeToNotNull_ArtikaPodkategorijaID_PodkategorijaKategorijaID.cs" />
+    <Compile Remove="Migrations\20191227155038_ChangeToNotNull_ArtikaPodkategorijaID_PodkategorijaKategorijaID.Designer.cs" />
+    <Compile Remove="Migrations\20191227160739_DodanoNull_Artikal_Podkategorija.cs" />
+    <Compile Remove="Migrations\20191227160739_DodanoNull_Artikal_Podkategorija.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewComponents\" />
+  </ItemGroup>
+
+</Project>

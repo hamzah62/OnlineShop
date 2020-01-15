@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Dodaj";
+    List<PodkategorijaPrikazVM> lista = ViewBag.Podkategorije as List<PodkategorijaPrikazVM>;
+}
+@using ClassLibrary1.ViewModels;
+
+@model ArtikalDodajVM;
+
+<br />
+<form ajax-poziv="da" ajax-rezultat="ajax" class="form-group" asp-action="Dodaj" asp-controller="Artikal" enctype="multipart/form-data">
+    <label for="naziv">Naziv</label>
+    <input class="form-control" asp-for="Naziv" />
+
+    <label for="opis">Opis</label>
+    <input class="form-control" asp-for="Opis" />
+
+    <label for="cijena">Cijena</label>
+    <input class="form-control" asp-for="Cijena" />
+
+    <label for="Popust">Popust</label>
+    <input class="form-control" asp-for="Popust" /><br />
+
+    <label for="Slika">Slika</label>
+    <input type="file" asp-for="Slika" /><br /><br />
+
+    <select asp-for="Podkategorija.ID">
+        <option value="" disabled selected>Odaberite kategoriju:</option>
+        @foreach ( PodkategorijaPrikazVM p in lista ) {
+            <option value="@p.ID">@p.Naziv</option>
+            }
+
+    </select>
+    <br /><br />
+   
+    <input class="btn btn-success" type="submit" value="Submit" /><br />
+</form>
+

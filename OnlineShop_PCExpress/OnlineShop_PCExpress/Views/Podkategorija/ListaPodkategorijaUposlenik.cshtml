@@ -1,0 +1,39 @@
+﻿
+@using ClassLibrary1.ViewModels;
+@model List<PodkategorijaPrikazVM>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    @if ( Model.Count > 0 ) {
+        <a class="btn btn-primary" ajax-poziv="da" ajax-rezultat="ajax" asp-action="Dodaj" asp-controller="Podkategorija">Dodaj novu</a>
+        <div id="ajax"></div>
+        <br />
+        <table class="table table-striped">
+            <thead>
+                <tr class="thead-dark"><td>Naziv</td><td>Kategorija</td></tr>
+            </thead>
+            @foreach ( PodkategorijaPrikazVM a in Model ) {
+                <tr>
+                    <td>@a.Naziv</td>
+                    <td>@a.Kategorija_.Text</td>
+                    <td><a ajax-poziv="da" ajax-rezultat="list" asp-action="Obrisi" asp-controller="Podkategorija" asp-route-ID="@a.ID" class="btn btn-danger">Obrisi</a></td>
+                    <td><a ajax-poziv="da" ajax-rezultat="ajax" asp-action="Uredi" asp-controller="Podkategorija" asp-route-ID="@a.ID" class="btn btn-warning">Uredi</a></td>
+                </tr>
+                }
+
+        </table>
+        }
+    else {
+        <h2>Trenutno ne postoji nijedna podkategorija.</h2>
+        <a class="btn btn-primary" ajax-poziv="da" ajax-rezultat="ajax" asp-action="Dodaj" asp-controller="Podkategorija">Dodaj novu</a>
+        <div id="ajax"></div>
+        }
+
+</body>
+
+</html>
+
+
+

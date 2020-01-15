@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Detalji";
+}
+@using ClassLibrary1.ViewModels;
+
+@model ArtikalPrikazVM;
+
+@{var imgsrc = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Slika));}
+<section>
+    <div id="image"><img src="@imgsrc" class="card-img" /></div>
+    <div id="article-body">
+        <p class="text-sm-left">@Model.Podkategorija.Naziv<br /></p>
+        <h4>@Model.Naziv</h4><br />
+        <p>Cijena:<strong>  @Model.Cijena KM</strong>  </p>
+
+        <div id="opis">
+            <p>Opis:</p>
+            <p>@Model.Opis</p>
+        </div>
+
+    </div>
+    
+</section>
+
+
+<style>
+  
+    section {
+        width: 80%;
+        margin: auto;
+        display: flex;
+    }
+
+    #image {
+        padding: 2%;
+        width: 30%;
+    }
+
+    #article-body {
+        padding: 2%;
+        margin-left:10%;
+    }
+    #opis{
+        margin-top:40%;
+    }
+</style>
+

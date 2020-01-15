@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Dodaj";
+}
+@using ClassLibrary1.ViewModels;
+
+@model KategorijaPrikazVM
+
+<br />
+<form ajax-poziv="da" ajax-rezultat="ajax" class="form-group" asp-action="Dodaj" asp-controller="Kategorija" enctype="multipart/form-data">
+    <label for="naziv">Naziv</label>
+    <input class="form-control" asp-for="Naziv" />
+
+    <input class="btn btn-success" type="submit" value="Submit" /><br />
+</form>
+

@@ -1,0 +1,47 @@
+﻿
+@using ClassLibrary1.ViewModels;
+@model ArtikalPrikaziSveVM
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    @if ( Model.artikli.Count() > 0 ) {
+        <a class="btn btn-primary" ajax-poziv="da" ajax-rezultat="ajax" asp-action="Dodaj" asp-controller="Artikal">Dodaj novi</a>
+        <div id="ajax"></div>
+        <br />
+        <table class="table table-striped">
+            <thead>
+                <tr class="thead-dark"><td>Slika</td><td>Sifra</td><td>Naziv</td><td>Opis</td><td>Cijena</td><td>Popust</td><td>Podkategorija</td><td>Kategorija</td></tr>
+            </thead>
+            @foreach ( ArtikalPrikazVM a in Model.artikli ) {
+                <tr>
+                    @{ string imgsrc = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(a.Slika));}
+
+                    <td><img src="@imgsrc" style="width:48px;height:48px" /></td>
+                    <td>@a.Sifra</td>
+                    <td>@a.Naziv</td>
+                    <td>@a.Opis</td>
+                    <td>@a.Cijena KM</td>
+                    <td>@a.Popust %</td>
+                    <td>@a.Podkategorija.Naziv</td>
+                    <td>@a.Podkategorija.Kategorija_.Text</td>
+                    <td><a ajax-poziv="da" ajax-rezultat="list" asp-action="Obrisi" asp-controller="Artikal" asp-route-ID="@a.ID" class="btn btn-danger">Obrisi</a></td>
+                    <td><a ajax-poziv="da" ajax-rezultat="ajax" asp-action="Uredi" asp-controller="Artikal" asp-route-ID="@a.ID" class="btn btn-warning">Uredi</a></td>
+                </tr>
+                }
+
+        </table>
+        }
+    else {
+        <h2>Trenutno ne postoji nijedan artikal.</h2>
+        <a class="btn btn-primary" ajax-poziv="da" ajax-rezultat="ajax" asp-action="Dodaj" asp-controller="Artikal">Dodaj novi</a>
+        <div id="ajax"></div>
+        }
+
+</body>
+
+</html>
+
+
+

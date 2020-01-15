@@ -1,0 +1,42 @@
+﻿
+@using ClassLibrary1.ViewModels;
+@model List<KategorijaPrikazVM>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    @foreach ( KategorijaPrikazVM k in Model ) {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" ajax-poziv="da" ajax-rezultat="artikli" asp-controller="Artikal" asp-action="FilterKategorija" asp-route-id="@k.ID">@k.Naziv</a>
+                            @foreach ( PodkategorijaPrikazVM p in k.podkategorije ) {
+                                
+                                    <ul>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" ajax-poziv="da" ajax-rezultat="artikli" asp-controller="Artikal" asp-action="FilterPodkategorija" asp-route-id="@p.ID">@p.Naziv</a>
+                                        </li>
+                                    </ul>
+
+                                }
+                        </li>
+                        }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</body>
+
+</html>
+
+
+

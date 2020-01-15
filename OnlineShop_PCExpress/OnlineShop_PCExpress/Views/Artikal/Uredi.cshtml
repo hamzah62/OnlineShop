@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Uredi";
+    List<PodkategorijaPrikazVM> lista = ViewBag.Podkategorije as List<PodkategorijaPrikazVM>;
+}
+@using ClassLibrary1.ViewModels;
+
+@model ArtikalPrikazVM;
+@{
+    string imgsrc = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Slika));
+}
+
+<br />
+<form ajax-poziv="da" ajax-rezultat="ajax" class="form-group" asp-action="Uredi" asp-controller="Artikal" enctype="multipart/form-data">
+    <label for="Slika">Slika</label>
+    <img src="@imgsrc" />
+    <input class="form-control-file" type="file" asp-for="Slika" value="@Model.Slika" />
+
+    <label for="Sifra">Sifra</label>
+    <input class="form-control" asp-for="Sifra" value="@Model.Sifra" readonly />
+
+    <label for="Naziv">Naziv</label>
+    <input class="form-control" asp-for="Naziv" />
+
+    <label for="Opis">Opis</label>
+    <input class="form-control" asp-for="Opis" />
+
+    <label for="Cijena">Cijena</label>
+    <input class="form-control" asp-for="Cijena" />
+
+    <label for="Popust">Popust</label>
+    <input class="form-control" asp-for="Popust" /><br />
+
+    <select asp-for="Podkategorija.ID">
+        <option value="" disabled selected>Odaberite kategoriju:</option>
+        @foreach ( PodkategorijaPrikazVM p in lista ) {
+            <option value="@p.ID">@p.Naziv</option>
+            }
+
+    </select>
+
+    <input type="hidden" asp-for="Podkategorija.Kategorija_.Value" value="@Model.Podkategorija.Kategorija_.Value" />
+
+    <input class="btn btn-success" type="submit" value="Submit" /><br />
+</form>

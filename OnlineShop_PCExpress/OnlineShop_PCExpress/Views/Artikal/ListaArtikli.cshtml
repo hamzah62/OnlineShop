@@ -1,0 +1,58 @@
+﻿
+@using ClassLibrary1.ViewModels;
+@model ArtikalPrikaziSveVM
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <br />
+    @if ( Model.artikli.Count() > 0 ) {
+        <div class=" col-md-6" style="margin:auto;flex-wrap:wrap;display:flex">
+            @foreach ( ArtikalPrikazVM a in Model.artikli ) {
+                <div class="card border-primary col-md-3" style="padding:2%;padding-bottom:0;margin:3%">
+                    @{ string imgsrc = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(a.Slika));}
+                    <img src="@imgsrc" class="card-img-top" alt="@a.Naziv">
+                    <div class="card-body text-center">
+
+                        <a class="naziv" asp-action="Detalji" asp-controller="Artikal" asp-route-id="@a.ID">@a.Naziv</a><br />
+                        <h5 class="card-title">
+                            @a.Cijena <br />KM
+
+                        </h5>
+                        <a href="#" class="btn btn-outline-info btn-sm">
+                            <svg id="i-cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M6 6 L30 6 27 19 9 19 M27 23 L10 23 5 2 2 2" />
+                                <circle cx="25" cy="27" r="2" />
+                                <circle cx="12" cy="27" r="2" />
+                            </svg>
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+                }
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                $(".naziv").hover(function () {
+                    $(this).css("color", "gray");
+                },
+                    function () {
+                        $(this).css("color", "blue");
+                    });
+            });
+        </script>
+        }
+    else {
+        <h2>Trenutno ne postoji nijedan artikal.</h2>
+        }
+</body>
+
+</html>
+
+
+
